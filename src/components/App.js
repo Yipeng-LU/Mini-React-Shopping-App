@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Clock from './Clock';
 function App() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Clock />
     </div>
   );
 }
