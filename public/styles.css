@@ -1,1 +1,45 @@
-
+body{
+  text-align: center;
+}
+.customInput{
+  display: inline-block;
+  width:30%;
+  margin:0 1%;
+}
+.component{
+  margin:2%;
+}
+.customBox{
+  margin-left:1%;
+}
+.checkOutRow p{
+  display: inline-block;
+  margin:0 2%;
+}
+.item-img{
+  width:200px;
+  height:200px;
+}
+.greeting{
+  background-color: #d6efc7;
+  padding:5% 0;
+}
+.checkout-search{
+  background-color: #96bb7c;
+  padding:2%;
+}
+.title{
+  color:#96bb7c;
+  font-weight: 600;
+}
+.sub-title{
+  color:#d6efc7;
+  font-weight:400;
+}
+.show-cart{
+  margin-top:2%;
+}
+.custom-btn{
+  margin:0 1%;
+  border-radius: 100%;
+}

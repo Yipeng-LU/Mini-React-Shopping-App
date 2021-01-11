@@ -4,12 +4,12 @@ function Item(props){
   const [count,setCnt]=useState(0)
   function increase(){
     setCnt(prev => prev+1);
-    props.update(name,'inc');
+    props.update(name,'inc',count);
   }
   function decrease(){
     setCnt(prev => {
       if (prev!==0){
-        props.update(name,'dec');
+        props.update(name,'dec',count);
         return prev-1
       } else {
         return 0
@@ -18,12 +18,11 @@ function Item(props){
   }
   return (
     <div>
-      <img src={url} />
-      <h2>item name: {name}</h2>
-      <h2>item price: {price}</h2>
-      <h2>item count: {count}</h2>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <img class='item-img' src={url} />
+      <h3>{name}</h3>
+      <p>price: ${price} count: {count}</p>
+      <button class='btn btn-success custom-btn' onClick={increase}>+</button>
+      <button class='btn btn-danger custom-btn' onClick={decrease}>-</button>
     </div>
   );
 }

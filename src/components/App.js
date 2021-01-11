@@ -15,7 +15,7 @@ function App() {
   const [search,setSearch]=useState('');
   const [isChecked,setChecked]=useState(false);
   const [selected,setSelected]=useState(new Set());
-  function update(itemName,status){
+  function update(itemName,status,count){
     if (status==='inc'){
       setTotal(prev=>prev+priceMap[itemName]);
       setSelected(prev=>{
@@ -23,11 +23,13 @@ function App() {
         return prev;
       })
     } else {
+      if (count===1){
+        setSelected(prev=>{
+          prev.delete(itemName);
+          return prev;
+        })
+      }
       setTotal(prev=>prev-priceMap[itemName]);
-      setSelected(prev=>{
-        prev.delete(itemName);
-        return prev;
-      })
     };
   }
   function searchFilter(value){
@@ -38,24 +40,36 @@ function App() {
   }
   return (
     <div>
-      <Clock />
-      <Greeting />
-      <Search searchFilter={searchFilter} />
-      <ShowCart checkbox={checkbox}/>
-      {
-        items.map(item=>{
-          if (item.name.includes(search)){
-            if (isChecked){
-              if (selected.has(item.name)){
-                return (<Item item={item} update={update}/>)
+      <div class='greeting'>
+        <Clock />
+        <Greeting />
+      </div>
+      <div class='row checkout-search'>
+        <div class='col'>
+          <CheckOut total={total}/>
+        </div>
+        <div class='col'>
+          <div class='search'>
+            <Search searchFilter={searchFilter} />
+            <ShowCart checkbox={checkbox}/>
+          </div>
+        </div>
+      </div>
+      <div class='row component'>
+        {
+          items.map(item=>{
+            if (item.name.includes(search)){
+              if (isChecked){
+                if (selected.has(item.name)){
+                  return (<div class='col-lg-4 col-md-6'><Item item={item} update={update}/></div>)
+                }
+              } else {
+                return (<div class='col-lg-4 col-md-6'><Item item={item} update={update}/></div>)
               }
-            } else {
-              return (<Item item={item} update={update}/>)
             }
-          }
-        })
-      }
-      <CheckOut total={total}/>
+          })
+        }
+      </div>
     </div>
   );
 }

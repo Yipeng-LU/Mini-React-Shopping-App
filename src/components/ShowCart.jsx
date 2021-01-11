@@ -6,9 +6,9 @@ function ShowCart(props){
     props.checkbox();
   }
   return (
-    <div>
-      <p>Only show items in my shopping cart: </p>
-      <input onChange={checkChecked} type='checkbox' checked={isChecked}/>
+    <div class='show-cart'>
+      <label>Only show items in my shopping cart:  </label>
+      <input class='customBox' onChange={checkChecked} type='checkbox' checked={isChecked}/>
     </div>
   );
 }

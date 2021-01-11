@@ -5,6 +5,10 @@ function Clock(){
     setTime(new Date().toLocaleTimeString());
   }
   setInterval(getTime, 1000);
-  return (<h1>Current time is {time}</h1>);
+  return (
+    <div>
+      <p>{time}</p>
+      <h1 class='title'>Welcome to mini React shopping app!</h1>
+    </div>);
 }
 export default Clock

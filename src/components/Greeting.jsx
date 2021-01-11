@@ -8,6 +8,9 @@ function Greeting(){
     setName(value);
   }
   function handleClick(){
+    if (!name){
+      return;
+    }
     setClick(true);
     const hour=new Date().getHours();
     let greetContent=''
@@ -23,16 +26,16 @@ function Greeting(){
     setGreet(greetContent);
   }
   return (
-    <div>
-      <h1>Welcome to mini react shopping app!</h1>
+    <div class='component'>
       {
         isClicked?null:
-        <div>
-          <input onChange={handleChange} type="text" placeholder="Your name" value={name}/>
-          <button onClick={handleClick}>Submit</button>
+        <div class='container'>
+          <label>Please tell us your name: </label>
+          <input class='form-control customInput' onChange={handleChange} type="text" placeholder="Your name" value={name}/>
+          <button class='btn btn-primary' onClick={handleClick}>Submit</button>
         </div>
       }
-      <h1>{isClicked?<div>{greet} {name}</div>:null}</h1>
+      <h1 class='title'>{isClicked?<div>{greet} {name}</div>:null}</h1>
     </div>
   );
 }

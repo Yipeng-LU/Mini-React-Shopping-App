@@ -6,7 +6,8 @@ function Search(props){
   }
   return (
     <div>
-      <input onChange={handleChange} type="text" placeholder="Search for items"/>
+      <label>Search for your favourite items: </label>
+      <input class='form-control customInput' onChange={handleChange} type="text" placeholder="Search for items"/>
     </div>
   );
 }
