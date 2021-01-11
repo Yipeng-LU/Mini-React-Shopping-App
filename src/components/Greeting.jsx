@@ -2,9 +2,13 @@ import React,{useState} from 'react';
 function Greeting(){
   const [greet, setGreet] = React.useState("");
   const [name, setName] = React.useState("");
+  const [isClicked, setClick] = React.useState(false);
   function handleChange(event){
     const value=event.target.value;
     setName(value);
+  }
+  function handleClick(){
+    setClick(true);
     const hour=new Date().getHours();
     let greetContent=''
     if (hour<12){
@@ -20,8 +24,15 @@ function Greeting(){
   }
   return (
     <div>
-      <input onChange={handleChange} type="text" placeholder="Your name" />
-      <h1>{greet} {name}</h1>
+      <h1>Welcome to mini react shopping app!</h1>
+      {
+        isClicked?null:
+        <div>
+          <input onChange={handleChange} type="text" placeholder="Your name" value={name}/>
+          <button onClick={handleClick}>Submit</button>
+        </div>
+      }
+      <h1>{isClicked?<div>{greet} {name}</div>:null}</h1>
     </div>
   );
 }

@@ -3,16 +3,18 @@ function Item(props){
   const {url,name,price}=props.item;
   const [count,setCnt]=useState(0)
   function increase(){
-    setCnt(prev => prev+1)
+    setCnt(prev => prev+1);
+    props.update(name,'inc');
   }
   function decrease(){
     setCnt(prev => {
       if (prev!==0){
+        props.update(name,'dec');
         return prev-1
       } else {
         return 0
       }
-    })
+    });
   }
   return (
     <div>
